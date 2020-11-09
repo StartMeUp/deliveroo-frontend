@@ -1,8 +1,14 @@
 /* Other rules */
+:root {
+  --light-grey: #f3f5f5;
+}
+
 body {
-  background-color: #f3f5f5;
+  background-color: var(--light-grey);
   color: #868a8a;
-  line-height: 1.4em;
+  line-height: 1.5;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 .container {
@@ -10,27 +16,127 @@ body {
   margin: 0 auto;
 }
 
+.hidden {
+  display: none;
+}
+
+section {
+  padding: 30px;
+}
+
 h1,
 h2,
 h3 {
   color: #2e3333;
   font-weight: bold;
-  margin-bottom: 1.2em;
+  margin-bottom: 2rem;
+  margin-top: 0.6rem;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.5em;
 }
 
 h3 {
+  font-size: 1.2em;
   font-weight: normal;
+  margin-bottom: 0.6rem;
+  margin-top: 0;
 }
 
-#header,
+header,
 #hero {
   background-color: white;
 }
 
-#content .container {
-  display: flex;
+header {
+  border-bottom: solid 1px var(--light-grey);
 }
 
-#content #menus {
+#content .container,
+#hero .container,
+header .container,
+.meals-container,
+.meal-card {
+  display: flex;
+  flex-direction: row;
+}
+
+#content .container {
+  justify-content: space-between;
+}
+
+#menus {
   flex: 1 1;
+  margin-right: 30px;
+}
+
+#sidebar {
+  width: 350px;
+}
+
+header .container {
+  align-items: center;
+  height: 40px;
+  padding: 10px 30px;
+}
+
+header img {
+  height: 100%;
+}
+
+.restaurant-info {
+  flex: 1 1;
+  margin-right: 20px;
+}
+
+.restaurant-info p {
+  font-size: 1.2em;
+}
+
+.restaurant-image {
+  width: 350px;
+  border-radius: 20px;
+}
+
+.meals-container {
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.meal-card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 10px;
+  width: 46%;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.meal-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-right: 8px;
+}
+
+.meal-info p {
+  font-size: 0.9rem;
+  color: #808484;
+  line-height: 1.3rem;
+  height: 2.6rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0 0 1rem;
+}
+
+.meal-card img {
+  height: 140px;
+  width: 140px;
+  object-fit: cover;
+  border-radius: 12px;
 }

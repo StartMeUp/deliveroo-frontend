@@ -8,22 +8,35 @@ import Categories from "./components/Categories";
 import Cart from "./components/Cart";
 
 function App() {
-  return (
+  const [data, setData] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(
+        "https://deliveroo-backend-smu.herokuapp.com/"
+      );
+      setData(response.data);
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  return isLoading ? (
+    <span>En cours de chargement</span>
+  ) : (
     <div>
-      <section id="header">
-        <div className="container">
-          <Header />
-        </div>
-      </section>
-      <section id="hero">
-        <div className="container">
-          <Hero />
-        </div>
-      </section>
+      <Header />
+      <Hero restaurant={data.restaurant} />
       <section id="content">
         <div className="container">
           <div id="menus">
-            <Categories />
+            <Categories categories={data.categories} />
           </div>
           <div id="sidebar">
             <Cart />
