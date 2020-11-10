@@ -1,7 +1,13 @@
 import React from "react";
 import Meals from "./Meals";
 
-const Categories = ({ categories, setSelectedMeals, selectedMeals }) => {
+const Categories = ({
+  categories,
+  setSelectedMeals,
+  selectedMeals,
+  handleSubTotal,
+  setSubTotal,
+}) => {
   return categories.map((category, index) => {
     return (
       category.meals.length > 0 && (
@@ -12,6 +18,8 @@ const Categories = ({ categories, setSelectedMeals, selectedMeals }) => {
               meals={category.meals}
               setSelectedMeals={setSelectedMeals}
               selectedMeals={selectedMeals}
+              handleSubTotal={handleSubTotal}
+              setSubTotal={setSubTotal}
             />
           </div>
         </div>

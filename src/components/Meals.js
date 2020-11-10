@@ -1,6 +1,12 @@
 import React from "react";
 
-const Meals = ({ meals, setSelectedMeals, selectedMeals }) => {
+const Meals = ({
+  meals,
+  setSelectedMeals,
+  selectedMeals,
+  handleSubTotal,
+  setSubTotal,
+}) => {
   const addSelectedMeal = (id, title, price) => {
     const newSelectedMeals = [...selectedMeals];
     newSelectedMeals.push({
@@ -10,6 +16,7 @@ const Meals = ({ meals, setSelectedMeals, selectedMeals }) => {
       quantity: 1,
     });
     setSelectedMeals(newSelectedMeals);
+    handleSubTotal();
   };
 
   return meals.map((meal) => {

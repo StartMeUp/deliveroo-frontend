@@ -7,11 +7,23 @@ import Hero from "./components/Hero";
 import Categories from "./components/Categories";
 import Cart from "./components/Cart";
 
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faMinusCircle, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
+library.add(faPlusCircle, faMinusCircle);
+
 function App() {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [selectedMeals, setSelectedMeals] = useState([]);
-  console.log("selected meals =>", selectedMeals);
+  const [subTotal, setSubTotal] = useState(0);
+
+  const handleSubTotal = () => {
+    let newSubTotal = 0;
+    selectedMeals.forEach((meal) => {
+      newSubTotal += Number(meal.price);
+    });
+    setSubTotal(newSubTotal);
+  };
 
   const fetchData = async () => {
     try {
@@ -42,12 +54,16 @@ function App() {
               categories={data.categories}
               setSelectedMeals={setSelectedMeals}
               selectedMeals={selectedMeals}
+              handleSubTotal={handleSubTotal}
+              setSubTotal={setSubTotal}
             />
           </div>
           <div id="sidebar">
             <Cart
               selectedMeals={selectedMeals}
               setSelectedMeals={setSelectedMeals}
+              subTotal={subTotal}
+              handleSubTotal={handleSubTotal}
             />
           </div>
         </div>

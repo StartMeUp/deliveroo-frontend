@@ -17,7 +17,7 @@ body {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 section {
@@ -159,9 +159,28 @@ header img {
   font-weight: bold;
   outline: none;
   border: 0;
+  font-size: 18px;
+  border-radius: 8px;
 }
 
 .cart-container button.empty {
   background-color: #bac3c3;
   color: #9facac;
+}
+
+.cart-content {
+  font-size: 16px;
+}
+
+#selected-meals {
+  margin-top: 8px;
+}
+.cart-content li {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+}
+
+.fa-w-16 {
+  color: #00ccbc;
 }
