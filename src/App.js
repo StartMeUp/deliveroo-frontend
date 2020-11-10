@@ -10,6 +10,8 @@ import Cart from "./components/Cart";
 function App() {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [selectedMeals, setSelectedMeals] = useState([]);
+  console.log("selected meals =>", selectedMeals);
 
   const fetchData = async () => {
     try {
@@ -36,10 +38,17 @@ function App() {
       <section id="content">
         <div className="container">
           <div id="menus">
-            <Categories categories={data.categories} />
+            <Categories
+              categories={data.categories}
+              setSelectedMeals={setSelectedMeals}
+              selectedMeals={selectedMeals}
+            />
           </div>
           <div id="sidebar">
-            <Cart />
+            <Cart
+              selectedMeals={selectedMeals}
+              setSelectedMeals={setSelectedMeals}
+            />
           </div>
         </div>
       </section>

@@ -1,7 +1,11 @@
 import React from "react";
 
 const Cart = () => {
-  return <p>Cart</p>;
+  return (
+    <div className="cart-container">
+      <button>Valider mon panier</button>
+    </div>
+  );
 };
 
 export default Cart;
