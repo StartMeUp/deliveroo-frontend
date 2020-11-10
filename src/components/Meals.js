@@ -4,11 +4,11 @@ const Meals = ({
   meals,
   setSelectedMeals,
   selectedMeals,
-  handleSubTotal,
-  setSubTotal,
+  increaseQuantity,
 }) => {
   const addSelectedMeal = (id, title, price) => {
     const newSelectedMeals = [...selectedMeals];
+
     newSelectedMeals.push({
       id,
       title,
@@ -16,7 +16,6 @@ const Meals = ({
       quantity: 1,
     });
     setSelectedMeals(newSelectedMeals);
-    handleSubTotal();
   };
 
   return meals.map((meal) => {
@@ -25,7 +24,13 @@ const Meals = ({
         className="meal-card"
         key={meal.id}
         onClick={() => {
-          addSelectedMeal(meal.id, meal.title, meal.price);
+          const selectedMealsIds = [];
+          selectedMeals.forEach((meal) => selectedMealsIds.push(meal.id));
+          if (selectedMealsIds.includes(meal.id)) {
+            increaseQuantity(meal.id);
+          } else {
+            addSelectedMeal(meal.id, meal.title, meal.price);
+          }
         }}
       >
         <div className="meal-info">

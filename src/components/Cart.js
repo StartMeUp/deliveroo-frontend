@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import SelectedMeals from "./SelectedMeals";
 
-const Cart = ({
-  selectedMeals,
-  setSelectedMeals,
-  subTotal,
-  handleSubTotal,
-}) => {
+const Cart = ({ selectedMeals, setSelectedMeals, increaseQuantity }) => {
   const delivery = 2.5;
+  const handleSubTotal = () => {
+    let newSubTotal = 0;
+    selectedMeals.forEach((meal) => {
+      newSubTotal += Number(meal.price) * meal.quantity;
+    });
+    return newSubTotal;
+  };
 
   return (
     <div className="cart-container">
@@ -19,21 +21,24 @@ const Cart = ({
           <SelectedMeals
             selectedMeals={selectedMeals}
             setSelectedMeals={setSelectedMeals}
-            handleTotal={handleSubTotal}
+            increaseQuantity={increaseQuantity}
           />
           <hr />
           <ul>
             <li>
-              <span>Sous-Total</span> <span>{subTotal} €</span>
+              <span>Sous-Total</span>{" "}
+              <span>{handleSubTotal().toFixed(2)} €</span>
             </li>
             <li>
-              <span>Frais de livraison</span> <span>{delivery} €</span>
+              <span>Frais de livraison</span>{" "}
+              <span>{delivery.toFixed(2)} €</span>
             </li>
           </ul>
           <hr />
           <ul>
             <li>
-              <span>Total</span> <span>{subTotal + delivery}</span>
+              <span>Total</span>{" "}
+              <span>{(delivery + handleSubTotal()).toFixed(2)}</span>
             </li>
           </ul>
         </div>

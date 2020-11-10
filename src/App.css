@@ -183,4 +183,9 @@ header img {
 
 .fa-w-16 {
   color: #00ccbc;
+  margin-right: 6px;
+}
+
+.fa-w-16:hover {
+  cursor: pointer;
 }

@@ -5,8 +5,7 @@ const Categories = ({
   categories,
   setSelectedMeals,
   selectedMeals,
-  handleSubTotal,
-  setSubTotal,
+  increaseQuantity,
 }) => {
   return categories.map((category, index) => {
     return (
@@ -18,8 +17,7 @@ const Categories = ({
               meals={category.meals}
               setSelectedMeals={setSelectedMeals}
               selectedMeals={selectedMeals}
-              handleSubTotal={handleSubTotal}
-              setSubTotal={setSubTotal}
+              increaseQuantity={increaseQuantity}
             />
           </div>
         </div>

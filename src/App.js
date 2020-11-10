@@ -15,15 +15,6 @@ function App() {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [selectedMeals, setSelectedMeals] = useState([]);
-  const [subTotal, setSubTotal] = useState(0);
-
-  const handleSubTotal = () => {
-    let newSubTotal = 0;
-    selectedMeals.forEach((meal) => {
-      newSubTotal += Number(meal.price);
-    });
-    setSubTotal(newSubTotal);
-  };
 
   const fetchData = async () => {
     try {
@@ -41,6 +32,14 @@ function App() {
     fetchData();
   }, []);
 
+  const increaseQuantity = (id) => {
+    const newSelectedMeals = [...selectedMeals];
+    newSelectedMeals.forEach((meal) => {
+      if (meal.id === id) meal.quantity++;
+    });
+    setSelectedMeals(newSelectedMeals);
+  };
+
   return isLoading ? (
     <span>En cours de chargement</span>
   ) : (
@@ -54,16 +53,14 @@ function App() {
               categories={data.categories}
               setSelectedMeals={setSelectedMeals}
               selectedMeals={selectedMeals}
-              handleSubTotal={handleSubTotal}
-              setSubTotal={setSubTotal}
+              increaseQuantity={increaseQuantity}
             />
           </div>
           <div id="sidebar">
             <Cart
               selectedMeals={selectedMeals}
               setSelectedMeals={setSelectedMeals}
-              subTotal={subTotal}
-              handleSubTotal={handleSubTotal}
+              increaseQuantity={increaseQuantity}
             />
           </div>
         </div>
