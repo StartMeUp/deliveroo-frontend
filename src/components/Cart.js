@@ -38,7 +38,7 @@ const Cart = ({ selectedMeals, setSelectedMeals, increaseQuantity }) => {
           <ul>
             <li>
               <span>Total</span>{" "}
-              <span>{(delivery + handleSubTotal()).toFixed(2)}</span>
+              <span>{(delivery + handleSubTotal()).toFixed(2)} €</span>
             </li>
           </ul>
         </div>
