@@ -32,11 +32,9 @@ function App() {
     fetchData();
   }, []);
 
-  const increaseQuantity = (id) => {
+  const increaseQuantity = (index) => {
     const newSelectedMeals = [...selectedMeals];
-    newSelectedMeals.forEach((meal) => {
-      if (meal.id === id) meal.quantity++;
-    });
+    newSelectedMeals[index].quantity++;
     setSelectedMeals(newSelectedMeals);
   };
 

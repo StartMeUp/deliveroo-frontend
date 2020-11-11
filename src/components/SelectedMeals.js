@@ -6,39 +6,46 @@ const SelectedMeals = ({
   setSelectedMeals,
   increaseQuantity,
 }) => {
-  const decreaseQuantity = (id) => {
+  const decreaseQuantity = (index) => {
     const newSelectedMeals = [...selectedMeals];
-    newSelectedMeals.forEach((meal, index) => {
-      if (meal.id === id) {
-        if (meal.quantity === 1) {
-          newSelectedMeals.splice(index, 1);
-          setSelectedMeals(newSelectedMeals);
-        } else {
-          meal.quantity--;
-          setSelectedMeals(newSelectedMeals);
-        }
-      }
-    });
+    if (newSelectedMeals[index].quantity === 1) {
+      newSelectedMeals.splice(index, 1);
+      setSelectedMeals(newSelectedMeals);
+    } else {
+      newSelectedMeals[index].quantity--;
+      setSelectedMeals(newSelectedMeals);
+    }
+    // newSelectedMeals.forEach((meal, index) => {
+    //   if (meal.id === id) {
+    //     if (meal.quantity === 1) {
+    //       newSelectedMeals.splice(index, 1);
+    //       setSelectedMeals(newSelectedMeals);
+    //     } else {
+    //       meal.quantity--;
+    //       setSelectedMeals(newSelectedMeals);
+    //     }
+    //   }
+    // });
   };
 
   return (
     selectedMeals.length !== 0 && (
       <ul id="selected-meals">
-        {selectedMeals.map((meal) => {
+        {selectedMeals.map((meal, index) => {
           return (
             <li key={meal.id}>
               <div>
                 <FontAwesomeIcon
                   icon="minus-circle"
                   onClick={() => {
-                    decreaseQuantity(meal.id);
+                    decreaseQuantity(index);
                   }}
                 />
                 {meal.quantity}{" "}
                 <FontAwesomeIcon
                   icon="plus-circle"
                   onClick={() => {
-                    increaseQuantity(meal.id);
+                    increaseQuantity(index);
                   }}
                 />{" "}
                 {meal.title.substring(0, 24) +

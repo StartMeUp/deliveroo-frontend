@@ -18,7 +18,7 @@ const Meals = ({
     setSelectedMeals(newSelectedMeals);
   };
 
-  return meals.map((meal) => {
+  return meals.map((meal, index) => {
     return (
       <div
         className="meal-card"
@@ -27,7 +27,7 @@ const Meals = ({
           const selectedMealsIds = [];
           selectedMeals.forEach((meal) => selectedMealsIds.push(meal.id));
           if (selectedMealsIds.includes(meal.id)) {
-            increaseQuantity(meal.id);
+            increaseQuantity(selectedMealsIds.indexOf(meal.id));
           } else {
             addSelectedMeal(meal.id, meal.title, meal.price);
           }
