@@ -152,6 +152,9 @@ header img {
   padding: 12px;
   border-radius: 12px;
   box-shadow: 0 22px 24px 0 rgba(46, 51, 51, 0.07);
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 20px;
 }
 
 .cart-container button {
